@@ -39,6 +39,6 @@ services:
     volumes:
       - ./:/var/www/html:cached
     labels:
-      - 'traefik.backend=rcc_apache_1'
+      - 'traefik.backend=example_apache_1'
       - 'traefik.port=80'
       - 'traefik.frontend.rule=Host:home.example.com,example.home.jaybeaton.com'
