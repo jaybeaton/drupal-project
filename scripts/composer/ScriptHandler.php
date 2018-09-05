@@ -35,6 +35,17 @@ class ScriptHandler {
       }
     }
 
+    $dirs = [
+      'db',
+      'config/sync',
+    ];
+
+    foreach ($dirs as $dir) {
+      if (!$fs->exists($drupalFinder->getComposerRoot() . '/'. $dir)) {
+        $fs->mkdir($drupalFinder->getComposerRoot() . '/'. $dir);
+      }
+    }
+
     // Prepare the settings file for installation
     if (!$fs->exists($drupalRoot . '/sites/default/settings.php') and $fs->exists($drupalRoot . '/sites/default/default.settings.php')) {
       $fs->copy($drupalRoot . '/sites/default/default.settings.php', $drupalRoot . '/sites/default/settings.php');
