@@ -12,3 +12,13 @@
 #  user: www-admin
 #  root: /path/to/drupal
 #  uri: http://stage.example.com
+
+snapshot:
+ root: web/
+ command:
+   sql:
+     dump:
+       options:
+         ordered-dump: true
+         structure-tables-key: common
+         result-file: ../db/db.sql

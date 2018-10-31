@@ -7,3 +7,16 @@
 drush:
   options:
     root: ../web/
+
+sql:
+  # List of tables whose *data* is skipped by the 'sql-dump' and 'sql-sync'
+  # commands when the "--structure-tables-key=common" option is provided.
+  # You may add specific tables to the existing array or add a new element.
+  structure-tables:
+    common:
+    - 'cache*'
+    - history
+    - queue
+    - 'search_*'
+    - 'sessions'
+    - 'watchdog'
