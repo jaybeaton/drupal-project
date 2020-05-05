@@ -1,0 +1,39 @@
+name: SITENAME
+recipe: drupal8
+config:
+  php: '7.2'
+  via: apache:2.4
+  webroot: web
+  database: mariadb:10.1
+  drush: ^9
+  xdebug: false
+  config:
+    vhosts: .lando/apache-default-ssl.conf
+services:
+  appserver:
+    overrides:
+      environment:
+        APACHE_PRODUCTION_IMAGE_REWRITE: 'https://example.com/%1%2%3'
+  mailhog:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver
+  node:
+    type: node
+    globals:
+      gulp-cli: "latest"
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+  gulp:
+    service: node
+  gulp-theme:
+    service: node
+    cmd: gulp --cwd=/app/web/themes/custom/SITETHEME/
+proxy:
+  appserver:
+    - home.example.com
+    - example.home.jaybeaton.com

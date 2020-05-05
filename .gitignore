@@ -27,6 +27,9 @@ db/*.prod.*sql.gz
 # Ignore .env files as they are personal.
 /.env
 
+# Ignore local-dev choice file.
+.use-docker-compose
+
 # Ignore OS-generated files.
 .DS_Store
 .DS_Store?
